@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>東京冬之戀 · 2025/12/10-16 — Hu & Anderson</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #fff0f5;
+      --card: #ffffff;
+      --primary: #ff8fa3; /* 戀愛粉 */
+      --secondary: #9ad1d4; /* 蒂芬妮藍 */
+      --accent: #ffd166;
+      --text: #594a4e;
+      --shadow: 0 8px 20px rgba(255, 143, 163, 0.12);
+      --radius: 20px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: 'Zen Maru Gothic', system-ui, sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, #fff 100%);
+      color: var(--text);
+      padding: 20px;
+      line-height: 1.6;
+      padding-bottom: 80px; /* 預留底部空間 */
+    }
+    header{ text-align: center; margin-bottom: 30px; }
+    .logo {
+      font-size: 40px; margin-bottom: 10px;
+      display: inline-block; filter: drop-shadow(0 4px 0px rgba(0,0,0,0.1));
+    }
+    h1{ margin:0; font-size: 22px; color: var(--primary); font-weight: 900; }
+    .sub{
+      background: #eef9fb; color: var(--secondary);
+      font-weight: 700; font-size: 13px; padding: 4px 12px;
+      border-radius: 50px; display: inline-block; margin-top: 8px;
+    }
+    .container{ max-width: 900px; margin: 0 auto; display: grid; gap: 20px; }
+    .card{
+      background: var(--card); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 24px; position: relative;
+    }
+    .row{ display: flex; gap: 20px; flex-wrap: wrap; }
+    .left{ flex: 2; min-width: 300px; }
+    .right{ flex: 1; min-width: 280px; }
+
+    /* Day List */
+    .day-item {
+      display: flex; gap: 16px; margin-bottom: 20px;
+      padding-bottom: 20px; border-bottom: 2px dashed #ffe0e6;
+    }
+    .day-item:last-child { border-bottom: none; margin-bottom: 0; }
+    .day-badge {
+      flex-shrink: 0; width: 54px; height: 54px;
+      background: var(--primary); color: white;
+      border-radius: 16px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      line-height: 1; font-weight: 900;
+      box-shadow: 0 4px 10px rgba(255, 120, 150, 0.4);
+    }
+    .day-badge span { font-size: 12px; opacity: 0.9; margin-top: 2px; }
+    .day-info h3 { margin: 0 0 6px 0; font-size: 17px; color: #444; }
+    .day-info p { margin: 0; font-size: 14px; color: #777; }
+    .tag {
+      display: inline-block; background: #fff5f7; color: var(--primary);
+      font-size: 12px; padding: 2px 8px; border-radius: 4px;
+      margin-right: 6px; font-weight: bold;
+    }
+
+    /* Buttons & Tools */
+    .cta {
+      width: 100%; padding: 12px; border: none; border-radius: 14px;
+      background: var(--secondary); color: white; font-weight: 700;
+      cursor: pointer; margin-bottom: 10px; font-size: 15px;
+      box-shadow: 0 4px 0 #7bbbc0; transition: transform 0.1s;
+    }
+    .cta:active { transform: translateY(4px); box-shadow: none; }
+    .cta.primary { background: var(--primary); box-shadow: 0 4px 0 #ff6b8b; }
+    
+    .pill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      background: #f4f4f4; padding: 6px 12px; border-radius: 20px;
+      font-size: 13px; color: #555; cursor: pointer; border: 1px solid #eee;
+    }
+    .pill:hover { background: white; border-color: var(--secondary); color: var(--secondary); }
+
+    .check-list li {
+      padding-left: 24px; position: relative; margin-bottom: 8px; font-size: 14px;
+    }
+    .check-list li::before {
+      content: '✔'; position: absolute; left: 0; color: var(--secondary); font-weight: bold;
+    }
+
+    /* --- Accounting Tool Styles --- */
+    .accounting-section {
+      border: 3px solid var(--secondary);
+      background: #f0fbff;
+    }
+    .acc-form {
+      display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 10px;
+      margin-bottom: 15px;
+      background: white; padding: 15px; border-radius: 15px;
+    }
+    .acc-form input, .acc-form select {
+      padding: 10px; border: 2px solid #eee; border-radius: 10px;
+      font-family: inherit; font-size: 14px; width: 100%;
+    }
+    .acc-form button {
+      background: var(--primary); color: white; border: none;
+      padding: 0 20px; border-radius: 10px; font-weight: bold; cursor: pointer;
+    }
+    .acc-list {
+      list-style: none; padding: 0; margin: 0;
+    }
+    .acc-item {
+      display: flex; justify-content: space-between; align-items: center;
+      background: white; margin-bottom: 8px; padding: 10px 15px;
+      border-radius: 12px; font-size: 14px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .acc-item .del-btn {
+      color: #ccc; margin-left: 10px; cursor: pointer; font-size: 18px;
+    }
+    .acc-item .del-btn:hover { color: #ff6b6b; }
+    .total-display {
+      text-align: right; font-size: 18px; font-weight: 900;
+      color: var(--primary); margin-top: 15px;
+      padding-top: 10px; border-top: 2px dashed #ccc;
+    }
+    
+    @media (max-width: 600px) {
+      .acc-form { grid-template-columns: 1fr 1fr; }
+      .acc-form button { grid-column: span 2; padding: 12px; }
+      .acc-form select { grid-column: span 2; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🎡</div>
+  <h1>Hu & Anderson 的東京冬之戀</h1>
+  <div class="sub">2025/12/10 - 12/16 ✨ 7天6夜</div>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <h3 style="margin-top:0; color:#333;">✈️ 航班 & 住宿 (Hotel Resol Akihabara)</h3>
+    <div style="font-size:14px; color:#555; background:#f9f9f9; padding:15px; border-radius:12px;">
+      <div>🛫 <strong>去程 12/10 (三)</strong>: CI126 • KHH 13:05 → NRT 17:25</div>
+      <div style="margin-top:6px;">🛬 <strong>回程 12/16 (二)</strong>: CI127 • NRT 18:25 → KHH 22:05</div>
+      <div style="margin-top:10px; font-size:13px; color:var(--primary);">
+        ★ 筆記：NO BEEF MEAL (已確認) • 行李 1PC • 位於秋葉原
+      </div>
+    </div>
+  </section>
+
+  <div class="row">
+    <div class="left card">
+      <h2 style="margin:0 0 20px 0; color:var(--primary);">📅 甜蜜行程表</h2>
+
+      <div class="day-item">
+        <div class="day-badge">D1<span>12/10</span></div>
+        <div class="day-info">
+          <h3>抵達 • 上野初探 & 飯店 Check-in</h3>
+          <p><span class="tag">交通</span>Skyliner 成田→日暮里→JR秋葉原</p>
+          <p style="margin-top:4px;">抵達飯店 (約 19:37)，之後夜遊上野阿美橫町吃晚餐、逛藥妝。</p>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-badge">D2<span>12/11</span></div>
+        <div class="day-info">
+          <h3>Disney Land 夢幻樂園 🏰</h3>
+          <p><span class="tag">全日</span>迪士尼樂園 (避開週末人潮)</p>
+          <p style="margin-top:4px;">提早 1.5 小時排隊，主攻「美女與野獸」與「米奇鬆餅」。穿上情侶裝拍照吧！</p>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-badge" style="background:#9ad1d4;">D3<span>12/12</span></div>
+        <div class="day-info">
+          <h3>淺草雷門 • 晴空塔 • 隅田川散策</h3>
+          <p><span class="tag">Metro啟用</span>72hr Pass Start (Day 1)</p>
+          <p style="margin-top:4px;">上午淺草寺求籤，下午漫步至晴空塔 (Skytree) 逛街水族館，晚上河岸散步。</p>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-badge" style="background:#9ad1d4;">D4<span>12/13</span></div>
+        <div class="day-info">
+          <h3>丸之內燈飾 • 東京站小旅行</h3>
+          <p><span class="tag">Metro</span>72hr Pass (Day 2)</p>
+          <p style="margin-top:4px;">東京車站一番街 (掃貨扭蛋/伴手禮) → 傍晚 Marunouchi Illumination 香檳金大道散步 ✨。</p>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-badge" style="background:#9ad1d4;">D5<span>12/14</span></div>
+        <div class="day-info">
+          <h3>原宿 • 澀谷 • 新宿 (潮流三角)</h3>
+          <p><span class="tag">Metro</span>72hr Pass (Day 3)</p>
+          <p style="margin-top:4px;">上午東鄉神社/表參道 → 下午澀谷 Sky (需預約) → 晚上新宿/代代木公園青之洞窟燈海。</p>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-badge">D6<span>12/15</span></div>
+        <div class="day-info">
+          <h3>豪德寺招財貓 • 六本木之夜 🐱</h3>
+          <p><span class="tag">悠閒</span>世田谷線路面電車</p>
+          <p style="margin-top:4px;">上午豪德寺 (滿滿招財貓超好拍) → 下午六本木新城 (Roppongi Hills) → 晚餐看東京鐵塔夜景。</p>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-badge">D7<span>12/16</span></div>
+        <div class="day-info">
+          <h3>最後採購 • 返回高雄</h3>
+          <p><span class="tag">返程</span>08:00 退房寄存</p>
+          <p style="margin-top:4px;">秋葉原最後衝刺 (Donki/多慶屋) → 14:00 Skyliner 往機場 → 18:25 起飛。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="card" style="position:sticky; top:20px;">
+        <h3 style="margin-top:0;">🛠️ 快速工具</h3>
+        <button class="cta primary" onclick="alert('請記得截圖存手機喔！')">📸 截圖此行程</button>
+        <button class="cta" onclick="window.open('https://www.google.com/maps/search/Hotel+Resol+Akihabara')">🗺️ 導航飯店</button>
+        
+        <h4 style="margin:20px 0 10px 0;">🎒 打包/確認清單</h4>
+        <ul class="check-list" style="list-style:none; padding:0;">
+          <li>護照 & 網卡 (eSIM)</li>
+          <li>Metro 72hr 券 (12/12-14用)</li>
+          <li>迪士尼門票 QR Code</li>
+          <li>行動電源 (非常重要!)</li>
+          <li>保暖物 (圍巾/手套)</li>
+          <li>休足時間 (每晚必備)</li>
+        </ul>
+
+        <h4 style="margin:20px 0 10px 0;">🗣️ 實用日語</h4>
+        <div class="pill-list">
+          <span class="pill" onclick="copy('写真を撮ってください')">📸 請幫拍照</span>
+          <span class="pill" onclick="copy('これをお願いします')">point_up 點這個</span>
+          <span class="pill" onclick="copy('お会計お願いします')">💰 結帳</span>
+          <span class="pill" onclick="copy('トイレはどこですか')">🚻 廁所在哪</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="card wide accounting-section" style="margin-top:20px;">
+    <h2 style="margin:0 0 15px 0; color:var(--text); display:flex; align-items:center;">
+      💰 旅費小管家 <span style="font-size:14px; margin-left:10px; color:#888; font-weight:normal;">(資料會自動存在手機裡喔！)</span>
+    </h2>
+    
+    <div class="acc-form">
+      <select id="acc-day">
+        <option value="D1">D1 (12/10)</option>
+        <option value="D2">D2 (12/11)</option>
+        <option value="D3">D3 (12/12)</option>
+        <option value="D4">D4 (12/13)</option>
+        <option value="D5">D5 (12/14)</option>
+        <option value="D6">D6 (12/15)</option>
+        <option value="D7">D7 (12/16)</option>
+      </select>
+      <input type="text" id="acc-item" placeholder="項目 (如: 章魚燒)">
+      <input type="number" id="acc-price" placeholder="金額 (¥)">
+      <button onclick="addExpense()">記一筆</button>
+    </div>
+
+    <ul class="acc-list" id="expense-list">
+      <li style="text-align:center; color:#999; padding:20px;">還沒有記帳紀錄喔～ 買點東西吧！✨</li>
+    </ul>
+
+    <div class="total-display">
+      總花費: ¥ <span id="total-val">0</span>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  function copy(text) {
+    navigator.clipboard.writeText(text);
+    alert('已複製：' + text);
+  }
+
+  // --- 記帳功能邏輯 ---
+  const STORAGE_KEY = 'tokyo_expenses_v1';
+  let expenses = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+  function addExpense() {
+    const day = document.getElementById('acc-day').value;
+    const item = document.getElementById('acc-item').value;
+    const price = parseInt(document.getElementById('acc-price').value);
+
+    if (!item || isNaN(price)) {
+      alert('請輸入項目和金額喔！');
+      return;
+    }
+
+    expenses.push({ day, item, price, id: Date.now() });
+    saveAndRender();
+    
+    // 清空輸入框
+    document.getElementById('acc-item').value = '';
+    document.getElementById('acc-price').value = '';
+  }
+
+  function deleteExpense(id) {
+    if(confirm('確定要刪除這筆紀錄嗎？')){
+      expenses = expenses.filter(e => e.id !== id);
+      saveAndRender();
+    }
+  }
+
+  function saveAndRender() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
+    render();
+  }
+
+  function render() {
+    const listEl = document.getElementById('expense-list');
+    const totalEl = document.getElementById('total-val');
+    
+    if (expenses.length === 0) {
+      listEl.innerHTML = '<li style="text-align:center; color:#999; padding:20px;">還沒有記帳紀錄喔～ 買點東西吧！✨</li>';
+      totalEl.innerText = '0';
+      return;
+    }
+
+    listEl.innerHTML = '';
+    let total = 0;
+
+    // 依照時間反序排列 (最新的在上面)
+    [...expenses].reverse().forEach(exp => {
+      total += exp.price;
+      const li = document.createElement('li');
+      li.className = 'acc-item';
+      li.innerHTML = `
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="tag" style="margin:0;">${exp.day}</span>
+          <strong>${exp.item}</strong>
+        </div>
+        <div style="display:flex; align-items:center;">
+          <span style="color:#555;">¥${exp.price.toLocaleString()}</span>
+          <span class="del-btn" onclick="deleteExpense(${exp.id})">×</span>
+        </div>
+      `;
+      listEl.appendChild(li);
+    });
+
+    totalEl.innerText = total.toLocaleString();
+  }
+
+  // 初始化讀取
+  render();
+</script>
+
+</body>
+</html>
